@@ -1,21 +1,11 @@
-"use strict";
+'use strict';
 
-const Example = require('./example.model');
-const RESPONSES = require('../../shared/responses.js');
+const Story = require('./story.model');
+const RESPONSES = require('../../shared/responses');
 
-class ExampleController{
-	getAll(req, res) {
-		return Example.find(req.params)
-			.then((result) => {
-				res.status(RESPONSES.STATUS.OK).json(result);
-			})
-			.catch((err) => {
-				res.status(RESPONSES.STATUS.NOT_FOUND).json(err);
-			});
-	}
-
+class StoryController{
 	add(req, res) {
-		const modelInstance = new Example(req.body);
+		const modelInstance = new Story(req.body);
 		return modelInstance.save()
 			.then((result) => {
 				res.status(RESPONSES.STATUS.CREATED).json(result);
@@ -26,7 +16,7 @@ class ExampleController{
 	}
 
 	getById(req, res) {
-		return Example.findById(req.params.id)
+		return Story.findById(req.params.id)
 			.then((result) => {
 				res.status(RESPONSES.STATUS.OK).json(result);
 			})
@@ -36,7 +26,7 @@ class ExampleController{
 	}
 
 	update(req, res) {
-		return Example.findById(req.params.id)
+		return Story.findById(req.params.id)
 			.then((modelInstance) => {
 				const updatedInstance = _lodash.extend(modelInstance, req.body);
 				return updatedInstance.save();
@@ -50,7 +40,7 @@ class ExampleController{
 	}
 
 	delete(req, res) {
-		return Example.remove({_id: req.params.id})
+		return Story.remove({_id: req.params.id})
 			.then((result)=> {
 				res.json(result);
 			})
@@ -60,6 +50,6 @@ class ExampleController{
 	}
 }
 
-module.exports = ExampleController;
+module.exports = StoryController;
 
  

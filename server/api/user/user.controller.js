@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const User = require('./user.model.js');
-const RESPONSES = require('../../shared/responses.js');
+const User = require('./user.model');
+const RESPONSES = require('../../shared/responses');
 
 class UserController{
 	getAll(req, res) {

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose'),
 			Schema = mongoose.Schema;
 
-const ExampleSchema = new Schema({
+const ProjectSchema = new Schema({
 	title: {
 		type: String,
 		required: true
@@ -18,55 +18,8 @@ const ExampleSchema = new Schema({
     },
 	stories: [
         {
-            _story_id: Schema.Types.ObjectId,
-            title: {
-                type: String,
-                required: true
-            },
-            description: {
-                type: String
-            },
-            mark: {
-                type: Number
-            },
-            comments: [
-                {
-                    date: {
-                        type: Date,
-                        default: Date.now
-                    },
-                    author: {
-                        type: Schema.Types.ObjectId,
-                        ref: 'User',
-                        required: true
-                    },
-                    text: {
-                        type: String,
-                        required: true
-                    }
-                }
-            ],
-            history: [
-                {
-                    date: {
-                        type: Date,
-                        default: Date.now
-                    },
-                    marks: [
-                        {
-                            author: {
-                                type: Schema.Types.ObjectId,
-                                ref: 'User',
-                                required: true
-                            },
-                            mark: {
-                                type: Number,
-                                required: true
-                            }
-                        }
-                    ]
-                }
-            ]
+            type: Schema.Types.ObjectId,
+            ref: 'Story'
         }
     ],
 	team: [
@@ -75,6 +28,6 @@ const ExampleSchema = new Schema({
             ref: 'User'
         }
     ]
-}, {collection: 'example'});
+}, {collection: 'project'});
 
-module.exports = mongoose.model('Example', ExampleSchema);
+module.exports = mongoose.model('Project', ProjectSchema);

@@ -1,12 +1,11 @@
 'use strict';
 
 const express = require('express');
-const ControllerClass = require('./example.controller');
+const ControllerClass = require('./story.controller');
 const controller = new ControllerClass();
 const router = express.Router();
 
 router.route('')
-	.get(controller.getAll.bind(controller))
 	.post(controller.add.bind(controller));
 
 router.route('/:id')

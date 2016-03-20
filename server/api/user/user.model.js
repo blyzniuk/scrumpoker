@@ -18,8 +18,8 @@ const UserSchema = new Schema({
 	},
 	avatar: {
 		type: String,
-		required: true
+		required: false
 	}
 }, {collection: 'user'});
 
-module.exports = mongoose.model('User', ExampleSchema);
+module.exports = mongoose.model('User', UserSchema);

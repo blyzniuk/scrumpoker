@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const ControllerClass = require('./user.controller.js');
+const ControllerClass = require('./user.controller');
 const controller = new ControllerClass();
 const router = express.Router();
 
